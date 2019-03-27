@@ -6,9 +6,9 @@
 class Writer
 {
 public:
-    Writer();
-    ~Writer();
-    virtual void WriteOutput(int N, double *x);
+  Writer();
+  ~Writer();
+  virtual void WriteOutput(int N, double *x);
 };
 
 #endif
