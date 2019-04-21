@@ -3,18 +3,24 @@
 #ifndef MESH_H
 #define MESH_H
 
+#include <vector>
+using namespace std;
+
 class Mesh1D
 {
 public:
   Mesh1D();
   Mesh1D(double L, int N, double alpha);
   ~Mesh1D();
-  virtual void BuildMesh (bool method, double* x_pt, double* x_fc, double* dx, double* Dx);
-  virtual void MethodA (double* x_pt, double* x_fc, double* dx, double* Dx);
+  virtual void BuildMesh (bool method, vector<double> &x_pt, 
+                        vector<double> &x_fc, vector<double> &dx, vector<double> &Dx);
+  virtual void MethodA (vector<double> &x_pt, vector<double> &x_fc, 
+                        vector<double> &dx, vector<double> &Dx);
 private:
-  int N;
+  // Initialized with default values
+  int N = 1;
   double alpha = 1.0;
-  double L;
+  double L = 1.0;
 };
 
 #endif

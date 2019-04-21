@@ -17,28 +17,25 @@ Mesh1D::~Mesh1D()
 {
 }
 
-void Mesh1D::BuildMesh(bool method, double* x_pt, double* x_fc, double* dx, double* Dx)
+void Mesh1D::BuildMesh(bool method, vector<double> &x_pt, vector<double> &x_fc,
+                      vector<double> &dx, vector<double> &Dx)
 {   
-  if (method == 0)
-      MethodA (x_pt, x_fc, dx, Dx);
-  else // TODO: call method B
-    return;
+  !method? MethodA (x_pt, x_fc, dx, Dx) : MethodA (x_pt, x_fc, dx, Dx) ;
 }
 
-void Mesh1D::MethodA(double* x_pt, double* x_fc, double* dx, double* Dx)
-{    
-  for (auto i = 1; i < N; i++)
+void Mesh1D::MethodA(vector<double> &x_pt, vector<double> &x_fc, vector<double> &dx, vector<double> &Dx)
+{
+  for (auto i = 1; i < x_pt.size(); i++)
   {
       x_pt[i] = L*pow((i) / (static_cast<double>(N) - 1), alpha);
-      x_fc[i - 1] = (x_pt[i] + x_pt[i - 1]) / 2;
+      x_fc[i] = (x_pt[i] + x_pt[i - 1]) / 2;
       dx[i - 1] = x_pt[i] - x_pt[i - 1];
   }
 
-  for(auto i = 1; i < N; i++)
-  {
-    Dx[i] = x_fc[i] - x_fc[i - 1];
-  }
+  x_fc.back() = L;
 
-  Dx[0] = x_fc[0] - x_pt[0];
-  Dx[N - 1] = x_pt[N - 1] - x_fc[N - 2];
+  for(auto i = 0; i < Dx.size(); i++)
+  {
+    Dx[i] = x_fc[i + 1] - x_fc[i];
+  }
 }

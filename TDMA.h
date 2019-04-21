@@ -3,16 +3,20 @@
 #ifndef TDMA_H
 #define TDMA_H
 
+#include <vector>
+using namespace std;
+
 class TDMA
 {
 public:
   TDMA ();
   TDMA (int N);
   ~TDMA ();
-  virtual void Solve (double* ud, double* d, double* ld, double* x);
+  virtual void Solve (vector<double> &ud, vector<double> &d, vector<double> &ld, vector<double> &phi, vector<double> &r);
 private:
-  int N;
-  double m;
+  // Initialize variables
+  int N = 0;
+  double m = 0.0;
 };
 
 #endif
