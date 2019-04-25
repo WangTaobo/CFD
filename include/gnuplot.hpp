@@ -14,7 +14,7 @@ public:
     Gnuplot();
     ~Gnuplot();
     FILE* gnuplotpipe;
-    void Operator (const string & command);
+    void operator ()(const string & command);
 };
 
 #endif

@@ -11,8 +11,8 @@ class TDMA
 public:
   TDMA ();
   TDMA (int N);
-  ~TDMA ();
-  virtual void Solve (vector<double> &ud, vector<double> &d, vector<double> &ld, vector<double> &phi, vector<double> &r);
+  virtual ~TDMA ();
+  virtual void LinSolve (vector<double> &ud, vector<double> &d, vector<double> &ld, vector<double> &phi, vector<double> &r);
 private:
   // Initialize variables
   int N = 0;

@@ -1,5 +1,3 @@
-#pragma once
-
 #ifndef MESH_H
 #define MESH_H
 
@@ -11,7 +9,7 @@ class Mesh1D
 public:
   Mesh1D();
   Mesh1D(double L, int N, double alpha);
-  ~Mesh1D();
+  virtual ~Mesh1D();
   virtual void BuildMesh (bool method, vector<double> &x_pt, 
                         vector<double> &x_fc, vector<double> &dx, vector<double> &Dx);
   virtual void MethodA (vector<double> &x_pt, vector<double> &x_fc, 

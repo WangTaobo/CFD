@@ -1,6 +1,6 @@
 #include <fstream>
 #include <iostream>
-#include "writer.h"
+#include "writer.hpp"
 
 Writer::Writer()
 {
@@ -10,14 +10,15 @@ Writer::~Writer()
 {
 }
 
-void Writer::WriteOutput(int N, double* x, double* x_pt)
+void Writer::WriteOutput(int N, vector<double> &phi, vector<double>&x_pt, vector<double> &dx,
+ vector<double> &Dx, double L, double T_b, double T_inf)
 {
   std::ofstream outfile;
-  outfile.open("solution.dat");
+  outfile.open("./Output/solution.dat");
   outfile << "#x" << " " << "y" << std::endl;
   for (auto i = 0; i < N; i++) 
   {
-    outfile << x_pt[i] << " " << x[i] << std::endl;
+    outfile << x_pt[i] / L << " " << (phi[i] - T_inf) / (T_b - T_inf) << std::endl;
   }
   outfile.close();
 
